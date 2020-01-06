@@ -41,20 +41,20 @@ void Usage(const char *argv0);
 */
 
 
-int main(int argc, char *argv[]) {
+int main( int argc, char const * argv[] ) {
 	try {
-		if (argc < 2 || argc > 3) {
-			Usage(argv[0]);	
+		if ( argc < 2 || argc > 3 ) {
+			Usage( argv[ 0 ] );	
 			return 1;
 		}
 
-		if (argc == 2) {
-			RingBuffer(argv[1]).dump(1);
+		if ( 2 == argc ) {
+			RingBuffer( argv[ 1 ] ).dump( 1 );
 			return 0;
 		}
 
-		if (strcmp(argv[1], "-r") == 0) {
-			OS::shm_unlink(argv[2]);
+		if ( 0 == strcmp( argv[ 1 ], "-r" ) ) {
+			OS::shm_unlink( argv[ 2 ] );
 			return 0;
 		}
 
@@ -80,7 +80,7 @@ int main(int argc, char *argv[]) {
 */
 
 
-void Usage(const char *argv0) {
+void Usage( char const * argv0 ) {
 	clog << endl << "Usage:" << endl;
 	clog << "$ " << argv0 << " [-f|-r|-z] <logname>" << endl << endl;
 	clog << "-f = wait for additional data to be appended to the log" << endl;
